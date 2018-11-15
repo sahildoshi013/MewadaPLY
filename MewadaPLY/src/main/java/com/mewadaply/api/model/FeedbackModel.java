@@ -20,19 +20,19 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="tbl_mp_feedback")
-public class TblMpFeedback  implements java.io.Serializable {
+public class FeedbackModel {
 
 
      private Integer feedbackId;
-     private TblMpUser tblMpUser;
+     private UserModel tblMpUser;
      private String feedbackSubject;
      private String feedbackMessage;
      private Date feedbackTime;
 
-    public TblMpFeedback() {
+    public FeedbackModel() {
     }
 
-    public TblMpFeedback(TblMpUser tblMpUser, String feedbackSubject, String feedbackMessage, Date feedbackTime) {
+    public FeedbackModel(UserModel tblMpUser, String feedbackSubject, String feedbackMessage, Date feedbackTime) {
        this.tblMpUser = tblMpUser;
        this.feedbackSubject = feedbackSubject;
        this.feedbackMessage = feedbackMessage;
@@ -53,11 +53,11 @@ public class TblMpFeedback  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="feedback_user_id", nullable=false)
-    public TblMpUser getTblMpUser() {
+    public UserModel getTblMpUser() {
         return this.tblMpUser;
     }
     
-    public void setTblMpUser(TblMpUser tblMpUser) {
+    public void setTblMpUser(UserModel tblMpUser) {
         this.tblMpUser = tblMpUser;
     }
 

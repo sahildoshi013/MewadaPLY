@@ -6,36 +6,34 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mewadaply.api.dao.FurnitureDesignDao;
-import com.mewadaply.api.dao.FurnitureTypeDao;
-import com.mewadaply.api.model.TblMpFurnitureDesign;
-import com.mewadaply.api.model.TblMpFurnitureType;
+import com.mewadaply.api.dao.IdeaDesignDao;
+import com.mewadaply.api.dao.IdeaTypeDao;
+import com.mewadaply.api.model.IdeaDesignModel;
+import com.mewadaply.api.model.IdeaTypeModel;
 import com.mewadaply.api.utils.FileUtils;
 
 @Service
 public class IdeasServiceImpl{
 	
 	@Autowired
-	FurnitureTypeDao furnitureTypeDao;
+	IdeaTypeDao furnitureTypeDao;
 	
 	@Autowired
-	FurnitureDesignDao furnitureDesignDao;
+	IdeaDesignDao furnitureDesignDao;
 	
-	public List<TblMpFurnitureType> getCategories(){
+	public List<IdeaTypeModel> getCategories(){
 		return furnitureTypeDao.findAll();
 	}
 	
-	public TblMpFurnitureType getCategoryById(Integer id) {
+	public IdeaTypeModel getCategoryById(Integer id) {
 		return furnitureTypeDao.findById(id).get();
 	}
 	
-	public List<TblMpFurnitureDesign> getDesigns(Integer id){
+	public List<IdeaDesignModel> getDesigns(Integer id){
 		if(id==0) {
 			return furnitureDesignDao.findAll();
 		}
@@ -43,8 +41,8 @@ public class IdeasServiceImpl{
 		return furnitureDesignDao.findBytblMpFurnitureType(getCategoryById(id));
 	}
 
-	public TblMpFurnitureType addCategory(TblMpFurnitureType category) {
-		TblMpFurnitureType result = furnitureTypeDao.save(category);
+	public IdeaTypeModel addCategory(IdeaTypeModel category) {
+		IdeaTypeModel result = furnitureTypeDao.save(category);
 		return result;
 	}
 	
@@ -57,7 +55,7 @@ public class IdeasServiceImpl{
 		}
 	}
 
-	public TblMpFurnitureDesign addDesign(int type, MultipartFile image) {
+	public IdeaDesignModel addDesign(int type, MultipartFile image) {
 		String filename = FileUtils.randomName(image); 
 		try {
             // Get the file and save it somewhere
@@ -69,13 +67,22 @@ public class IdeasServiceImpl{
         }
 
 		
-		TblMpFurnitureDesign design = new TblMpFurnitureDesign();
+		IdeaDesignModel design = new IdeaDesignModel();
 		design.setTblMpFurnitureType(getCategoryById(type));
 		design.setDesignImage(filename);
 		design.setDesignVisiblity(true);
 		design.setDesignTime(new Date());
 		
 		return furnitureDesignDao.save(design);
+	}
+
+	public boolean deleteDesign(int type, int id) {
+		try{
+			furnitureDesignDao.deleteById(id);
+			return true;
+		}catch(IllegalArgumentException i) {
+			return false;
+		}
 	}
 	
 }

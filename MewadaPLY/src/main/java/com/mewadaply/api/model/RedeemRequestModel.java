@@ -20,19 +20,19 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="tbl_mp_redeem_request")
-public class TblMpRedeemRequest  implements java.io.Serializable {
+public class RedeemRequestModel {
 
 
      private Integer requestId;
-     private TblMpRedeemOffers tblMpRedeemOffers;
-     private TblMpUser tblMpUser;
+     private RedeemOffersModel tblMpRedeemOffers;
+     private UserModel tblMpUser;
      private boolean requestStatus;
      private Date requestTime;
 
-    public TblMpRedeemRequest() {
+    public RedeemRequestModel() {
     }
 
-    public TblMpRedeemRequest(TblMpRedeemOffers tblMpRedeemOffers, TblMpUser tblMpUser, boolean requestStatus, Date requestTime) {
+    public RedeemRequestModel(RedeemOffersModel tblMpRedeemOffers, UserModel tblMpUser, boolean requestStatus, Date requestTime) {
        this.tblMpRedeemOffers = tblMpRedeemOffers;
        this.tblMpUser = tblMpUser;
        this.requestStatus = requestStatus;
@@ -53,21 +53,21 @@ public class TblMpRedeemRequest  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="request_offer_id", nullable=false)
-    public TblMpRedeemOffers getTblMpRedeemOffers() {
+    public RedeemOffersModel getTblMpRedeemOffers() {
         return this.tblMpRedeemOffers;
     }
     
-    public void setTblMpRedeemOffers(TblMpRedeemOffers tblMpRedeemOffers) {
+    public void setTblMpRedeemOffers(RedeemOffersModel tblMpRedeemOffers) {
         this.tblMpRedeemOffers = tblMpRedeemOffers;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="request_user_id", nullable=false)
-    public TblMpUser getTblMpUser() {
+    public UserModel getTblMpUser() {
         return this.tblMpUser;
     }
     
-    public void setTblMpUser(TblMpUser tblMpUser) {
+    public void setTblMpUser(UserModel tblMpUser) {
         this.tblMpUser = tblMpUser;
     }
 

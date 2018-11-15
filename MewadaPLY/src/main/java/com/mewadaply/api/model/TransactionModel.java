@@ -20,27 +20,27 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="tbl_mp_transaction")
-public class TblMpTransaction  implements java.io.Serializable {
+public class TransactionModel {
 
 
      private Integer tranId;
-     private TblMpUser tblMpUser;
+     private UserModel tblMpUser;
      private String tranDescription;
      private int tranPoint;
      private boolean tranType;
      private Date tranTime;
 
-    public TblMpTransaction() {
+    public TransactionModel() {
     }
 
 	
-    public TblMpTransaction(TblMpUser tblMpUser, int tranPoint, boolean tranType, Date tranTime) {
+    public TransactionModel(UserModel tblMpUser, int tranPoint, boolean tranType, Date tranTime) {
         this.tblMpUser = tblMpUser;
         this.tranPoint = tranPoint;
         this.tranType = tranType;
         this.tranTime = tranTime;
     }
-    public TblMpTransaction(TblMpUser tblMpUser, String tranDescription, int tranPoint, boolean tranType, Date tranTime) {
+    public TransactionModel(UserModel tblMpUser, String tranDescription, int tranPoint, boolean tranType, Date tranTime) {
        this.tblMpUser = tblMpUser;
        this.tranDescription = tranDescription;
        this.tranPoint = tranPoint;
@@ -62,11 +62,11 @@ public class TblMpTransaction  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="tran_user_id", nullable=false)
-    public TblMpUser getTblMpUser() {
+    public UserModel getTblMpUser() {
         return this.tblMpUser;
     }
     
-    public void setTblMpUser(TblMpUser tblMpUser) {
+    public void setTblMpUser(UserModel tblMpUser) {
         this.tblMpUser = tblMpUser;
     }
 

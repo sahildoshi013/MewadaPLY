@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="tbl_mp_furniture_design")
-public class TblMpFurnitureDesign implements java.io.Serializable{
+public class IdeaDesignModel implements java.io.Serializable{
 
 
      /**
@@ -29,15 +29,15 @@ public class TblMpFurnitureDesign implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer designId;
-     private TblMpFurnitureType tblMpFurnitureType;
+     private IdeaTypeModel tblMpFurnitureType;
      private String designImage;
      private boolean designVisiblity;
      private Date designTime;
 
-    public TblMpFurnitureDesign() {
+    public IdeaDesignModel() {
     }
 
-    public TblMpFurnitureDesign(TblMpFurnitureType tblMpFurnitureType, String designImage, boolean designVisiblity, Date designTime) {
+    public IdeaDesignModel(IdeaTypeModel tblMpFurnitureType, String designImage, boolean designVisiblity, Date designTime) {
        this.tblMpFurnitureType = tblMpFurnitureType;
        this.designImage = designImage;
        this.designVisiblity = designVisiblity;
@@ -58,11 +58,11 @@ public class TblMpFurnitureDesign implements java.io.Serializable{
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="design_type", nullable=false)
-    public TblMpFurnitureType getTblMpFurnitureType() {
+    public IdeaTypeModel getTblMpFurnitureType() {
         return this.tblMpFurnitureType;
     }
     
-    public void setTblMpFurnitureType(TblMpFurnitureType tblMpFurnitureType) {
+    public void setTblMpFurnitureType(IdeaTypeModel tblMpFurnitureType) {
         this.tblMpFurnitureType = tblMpFurnitureType;
     }
 

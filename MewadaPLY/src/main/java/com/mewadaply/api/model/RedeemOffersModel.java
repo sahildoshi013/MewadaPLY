@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="tbl_mp_redeem_offers")
-public class TblMpRedeemOffers  implements java.io.Serializable {
+public class RedeemOffersModel {
 
 
      private Integer offerId;
@@ -31,20 +31,20 @@ public class TblMpRedeemOffers  implements java.io.Serializable {
      private String offerImage;
      private Date offerCreationTime;
      private boolean offerActive;
-     private Set<TblMpRedeemRequest> tblMpRedeemRequests = new HashSet<TblMpRedeemRequest>(0);
+     private Set<RedeemRequestModel> tblMpRedeemRequests = new HashSet<RedeemRequestModel>(0);
 
-    public TblMpRedeemOffers() {
+    public RedeemOffersModel() {
     }
 
 	
-    public TblMpRedeemOffers(String offerName, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive) {
+    public RedeemOffersModel(String offerName, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive) {
         this.offerName = offerName;
         this.offerPoint = offerPoint;
         this.offerImage = offerImage;
         this.offerCreationTime = offerCreationTime;
         this.offerActive = offerActive;
     }
-    public TblMpRedeemOffers(String offerName, String offerDescription, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive, Set<TblMpRedeemRequest> tblMpRedeemRequests) {
+    public RedeemOffersModel(String offerName, String offerDescription, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive, Set<RedeemRequestModel> tblMpRedeemRequests) {
        this.offerName = offerName;
        this.offerDescription = offerDescription;
        this.offerPoint = offerPoint;
@@ -127,11 +127,11 @@ public class TblMpRedeemOffers  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="tblMpRedeemOffers")
-    public Set<TblMpRedeemRequest> getTblMpRedeemRequests() {
+    public Set<RedeemRequestModel> getTblMpRedeemRequests() {
         return this.tblMpRedeemRequests;
     }
     
-    public void setTblMpRedeemRequests(Set<TblMpRedeemRequest> tblMpRedeemRequests) {
+    public void setTblMpRedeemRequests(Set<RedeemRequestModel> tblMpRedeemRequests) {
         this.tblMpRedeemRequests = tblMpRedeemRequests;
     }
 

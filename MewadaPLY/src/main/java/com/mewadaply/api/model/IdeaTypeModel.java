@@ -15,20 +15,20 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tbl_mp_furniture_type")
-public class TblMpFurnitureType{
+public class IdeaTypeModel{
 	
 	private Integer typeId;
      private String typeName;
      //private Set<TblMpFurnitureDesign> tblMpFurnitureDesigns = new HashSet<TblMpFurnitureDesign>(0);
 
-    public TblMpFurnitureType() {
+    public IdeaTypeModel() {
     }
 
 	
-    public TblMpFurnitureType(String typeName) {
+    public IdeaTypeModel(String typeName) {
         this.typeName = typeName;
     }
-    public TblMpFurnitureType(String typeName, Set<TblMpFurnitureDesign> tblMpFurnitureDesigns) {
+    public IdeaTypeModel(String typeName, Set<IdeaDesignModel> tblMpFurnitureDesigns) {
        this.typeName = typeName;
        //this.tblMpFurnitureDesigns = tblMpFurnitureDesigns;
     }
