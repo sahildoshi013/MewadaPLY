@@ -1,4 +1,4 @@
-package com.mewadaply.api.controller;
+package com.mewadaply.jsp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
