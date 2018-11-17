@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,63 +21,42 @@ import com.mewadaply.api.model.IdeaDesignModel;
 import com.mewadaply.api.model.IdeaTypeModel;
 import com.mewadaply.api.service.IdeasServiceImpl;
 
-@RestController
-@RequestMapping("categories")
+@Controller
+@RequestMapping("/admin/ideas")
 public class IdeaController {
-	
+
 	@Autowired
 	IdeasServiceImpl ideaService;
-	
+
 	@GetMapping
-	List<IdeaTypeModel> getAllIdeaType(){
+	List<IdeaTypeModel> getAllIdeaType() {
 		List<IdeaTypeModel> categories = ideaService.getCategories();
 		System.out.println(categories.size());
 		return categories;
 	}
-	
-	@GetMapping("/{type}")
-	IdeaTypeModel getIdeaType(@PathVariable int type){
-		return ideaService.getCategoryById(type);
-	}
-	
-	@PostMapping(consumes = {
-			MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE
-	},
-		produces = {
-				MediaType.APPLICATION_JSON_VALUE,
-				MediaType.APPLICATION_XML_VALUE
-	})
-	public IdeaTypeModel createIdeaType(@RequestParam("category") String typeName) {
-		IdeaTypeModel category = new IdeaTypeModel(typeName);
-		return ideaService.addCategory(category);
-	}
-	
-	@DeleteMapping(path = "/{type}" ,consumes = {
-			MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE
-	},
-		produces = {
-				MediaType.APPLICATION_JSON_VALUE,
-				MediaType.APPLICATION_XML_VALUE
-	})
+
+	@DeleteMapping(path = "/category/{type}", consumes = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
+					MediaType.APPLICATION_XML_VALUE })
+	@CrossOrigin(origins = "*")
 	public Result deleteIdeaType(@PathVariable int type) {
 		return Result.getResult(ideaService.deleteCategory(type), "");
 	}
-	
+
 	@GetMapping("/{type}/designs")
-	List<IdeaDesignModel> getIdeaByType(@PathVariable(value="type") int type){
+	public List<IdeaDesignModel> getIdeaByType(@PathVariable(value = "type") int type) {
 		return ideaService.getDesigns(type);
 	}
-	
-	@PostMapping("/{type}/designs")
-	IdeaDesignModel addIdea(@PathVariable(value="type") int type,@RequestParam("image") MultipartFile image){
-		return ideaService.addDesign(type,image);
+
+	@GetMapping("/{type}")
+	public String showIdeaPage(ModelMap model, @PathVariable Integer type) {
+		model.put("page", 4);
+		model.put("types", ideaService.getCategories());
+		model.put("type", ideaService.getCategoryById(type));
+		if (type == null) {
+			type = 0;
+		}
+		model.put("ideas", ideaService.getDesigns(type));
+		return "ideas";
 	}
-	
-	@DeleteMapping("/{type}/designs/{id}")
-	Result deleteIdea(@PathVariable(value="type") int type,@PathVariable("id") int id){
-		return Result.getResult(ideaService.deleteDesign(type,id),"");
-	}
-	
 }

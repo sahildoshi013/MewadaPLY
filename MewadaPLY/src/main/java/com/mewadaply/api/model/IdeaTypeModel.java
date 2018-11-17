@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="tbl_mp_furniture_type")
 public class IdeaTypeModel{
 	
+	
 	private Integer typeId;
      private String typeName;
      //private Set<TblMpFurnitureDesign> tblMpFurnitureDesigns = new HashSet<TblMpFurnitureDesign>(0);

@@ -2,35 +2,35 @@ package com.mewadaply.api.model;
 
 public class Result {
 	
-	private boolean isSuccess;
-	private String message;
+	private boolean status;
+	private Object message;
 	
 	Result(boolean result){
 		this(result, "");
 	}
 	
-	Result(boolean result, String message) {
-		this.isSuccess = result;
+	Result(boolean result, Object message) {
+		this.status = result;
 		this.message = message;
 	}
 	
-	public static Result getResult(boolean result,String message) {
+	public static Result getResult(boolean result,Object message) {
 		return new Result(result,message);
 	}
 
-	public boolean isSuccess() {
-		return isSuccess;
+	public boolean isStatus() {
+		return status;
 	}
 
-	public void setSuccess(boolean isSuccess) {
-		this.isSuccess = isSuccess;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
-	public String getMessage() {
+	public Object getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(Object message) {
 		this.message = message;
 	}
 	

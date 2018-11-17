@@ -1,0 +1,11 @@
+.btn-fab{
+    position: fixed;
+    z-index: 998;
+    right: 35px;
+    bottom: 35px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    max-width: 65px;
+    max-height: 65px;
+    cursor: pointer;
+}
