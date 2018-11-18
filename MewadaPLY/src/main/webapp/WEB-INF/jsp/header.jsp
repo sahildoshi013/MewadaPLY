@@ -166,21 +166,21 @@
         <li class="header">MAIN NAVIGATION</li>
        
 		<li class="${page == 1 ? "active" : ""}">
-          <a href="/mewadaply395004admin/main/dashboard">
+          <a href="/admin/dashboard">
             <i class="fa fa-dashboard"></i>
             <span>Dashboard</span>
           </a>
         </li>
 
         <li class="${page == 2 ? "active" : ""}">
-        <a href="mewadaply395004admin/redeem">
+        <a href="/admin/redeem">
             <i class="fa fa-trophy"></i>
             <span>Redeem Requests</span>
           </a>
         </li>
 
         <li class="${page == 3 ? "active" : ""}">
-        <a href="mewadaply395004admin/offer">
+        <a href="/admin/offer">
             <i class="fa fa-dollar"></i>
             <span>Reward Offers</span>
           </a>
