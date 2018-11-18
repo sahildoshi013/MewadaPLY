@@ -17,7 +17,7 @@ import com.mewadaply.api.model.IdeaTypeModel;
 import com.mewadaply.api.utils.FileUtils;
 
 @Service
-public class IdeasServiceImpl {
+public class IdeasService {
 
 	@Autowired
 	IdeaTypeDao furnitureTypeDao;

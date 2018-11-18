@@ -16,14 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mewadaply.api.model.Result;
-import com.mewadaply.api.service.IdeasServiceImpl;
+import com.mewadaply.api.service.IdeasService;
 
 @RestController
 @RequestMapping("/admin")
 public class AjaxController {
 
 	@Autowired
-	IdeasServiceImpl ideasServiceImpl;
+	IdeasService ideasServiceImpl;
 
 	@DeleteMapping("/ideas/{type}")
 	@CrossOrigin(origins = "*")

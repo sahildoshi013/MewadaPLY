@@ -187,18 +187,18 @@
         </li>
 
         <li class="${page == 4 ? "active" : ""}">
-        <a href="ideas/1">
+        <a href="/admin/ideas/1">
             <i class="fa fa-fire"></i>
             <span>Ideas Trends</span>
           </a>
         </li>
 
-        <li class="${page == 5 ? "active" : ""}">
+        <!--<li class="${page == 5 ? "active" : ""}">
         <a href="mewadaply395004admin/notification">
             <i class="fa fa-bell"></i>
             <span>Notification</span>
           </a>
-        </li>
+        </li>-->
 
         <li class="${page == 6 ? "active" : ""}">
         <a href="mewadaply395004admin/main/points_history">
@@ -215,13 +215,13 @@
         </li>
 
         <li class="${page == 8 ? "active" : ""}">
-        <a href="mewadaply395004admin/main/user_data">
+        <a href="/admin/users">
             <i class="fa fa-users"></i>
             <span>User Data</span>
           </a>
         </li>
 
-        <li class="${page == 9 ? "active" : ""}">
+        <!--<li class="${page == 9 ? "active" : ""}">
         <a href="mewadaply395004admin/sites/">
             <i class="fa fa-building"></i>
             <span>Sites</span>
@@ -233,7 +233,7 @@
             <i class="fa fa-male"></i>
             <span>Architect/Mistry</span>
           </a>
-        </li>
+        </li>-->
 
       </ul>
     </section>

@@ -19,14 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mewadaply.api.model.Result;
 import com.mewadaply.api.model.IdeaDesignModel;
 import com.mewadaply.api.model.IdeaTypeModel;
-import com.mewadaply.api.service.IdeasServiceImpl;
+import com.mewadaply.api.service.IdeasService;
 
 @Controller
 @RequestMapping("/admin/ideas")
 public class IdeaController {
 
 	@Autowired
-	IdeasServiceImpl ideaService;
+	IdeasService ideaService;
 
 	@GetMapping
 	List<IdeaTypeModel> getAllIdeaType() {

@@ -35,12 +35,11 @@ public class UserModel {
      private String profilePic;
      private String password;
      private boolean userVerified;
-     private boolean userType;
+     private int userType;
+     private int pointEarned;
+     private int pointRedeem;
      private Date timeOfCreation;
      private Date timeOfUpdation;
-     private Set<FeedbackModel> tblMpFeedbacks = new HashSet<FeedbackModel>(0);
-     private Set<RedeemRequestModel> tblMpRedeemRequests = new HashSet<RedeemRequestModel>(0);
-     private Set<TransactionModel> tblMpTransactions = new HashSet<TransactionModel>(0);
 
     public UserModel() {
     }
@@ -49,7 +48,7 @@ public class UserModel {
     
     
     //rev-eng
-    public UserModel(String firstName, String lastName, String phoneNo, String password, boolean userVerified, boolean userType, Date timeOfCreation, Date timeOfUpdation) {
+    public UserModel(String firstName, String lastName, String phoneNo, String password, boolean userVerified, int userType, Date timeOfCreation, Date timeOfUpdation) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNo = phoneNo;
@@ -59,7 +58,7 @@ public class UserModel {
         this.timeOfCreation = timeOfCreation;
         this.timeOfUpdation = timeOfUpdation;
     }
-    public UserModel(String firstName, String lastName, String emailId, String phoneNo, String addressLine1, String addressLine2, String city, String profilePic, String password, boolean userVerified, boolean userType, Date timeOfCreation, Date timeOfUpdation, Set<FeedbackModel> tblMpFeedbacks, Set<RedeemRequestModel> tblMpRedeemRequests, Set<TransactionModel> tblMpTransactions) {
+    public UserModel(String firstName, String lastName, String emailId, String phoneNo, String addressLine1, String addressLine2, String city, String profilePic, String password, boolean userVerified, int userType, Date timeOfCreation, Date timeOfUpdation) {
        this.firstName = firstName;
        this.lastName = lastName;
        this.emailId = emailId;
@@ -73,9 +72,6 @@ public class UserModel {
        this.userType = userType;
        this.timeOfCreation = timeOfCreation;
        this.timeOfUpdation = timeOfUpdation;
-       this.tblMpFeedbacks = tblMpFeedbacks;
-       this.tblMpRedeemRequests = tblMpRedeemRequests;
-       this.tblMpTransactions = tblMpTransactions;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -192,15 +188,39 @@ public class UserModel {
 
     
     @Column(name="user_type", nullable=false)
-    public boolean isUserType() {
+    public int getUserType() {
         return this.userType;
     }
     
-    public void setUserType(boolean userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
     }
+    
+    @Column(name="point_earned",nullable=false)
+    public int getPointEarned() {
+		return pointEarned;
+	}
 
-    @Temporal(TemporalType.TIMESTAMP)
+	public void setPointEarned(int pointEarned) {
+		this.pointEarned = pointEarned;
+	}
+
+	@Column(name="point_redeem",nullable=false)
+	public int getPointRedeem() {
+		return pointRedeem;
+	}
+
+
+
+
+	public void setPointRedeem(int pointRedeem) {
+		this.pointRedeem = pointRedeem;
+	}
+
+
+
+
+	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="time_of_creation", nullable=false, length=19)
     public Date getTimeOfCreation() {
         return this.timeOfCreation;
@@ -219,36 +239,6 @@ public class UserModel {
     public void setTimeOfUpdation(Date timeOfUpdation) {
         this.timeOfUpdation = timeOfUpdation;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tblMpUser")
-    public Set<FeedbackModel> getTblMpFeedbacks() {
-        return this.tblMpFeedbacks;
-    }
-    
-    public void setTblMpFeedbacks(Set<FeedbackModel> tblMpFeedbacks) {
-        this.tblMpFeedbacks = tblMpFeedbacks;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tblMpUser")
-    public Set<RedeemRequestModel> getTblMpRedeemRequests() {
-        return this.tblMpRedeemRequests;
-    }
-    
-    public void setTblMpRedeemRequests(Set<RedeemRequestModel> tblMpRedeemRequests) {
-        this.tblMpRedeemRequests = tblMpRedeemRequests;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tblMpUser")
-    public Set<TransactionModel> getTblMpTransactions() {
-        return this.tblMpTransactions;
-    }
-    
-    public void setTblMpTransactions(Set<TransactionModel> tblMpTransactions) {
-        this.tblMpTransactions = tblMpTransactions;
-    }
-
-    
-
 
 }
 
