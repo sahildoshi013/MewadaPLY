@@ -27,20 +27,20 @@ public class TransactionModel {
      private UserModel tblMpUser;
      private String tranDescription;
      private int tranPoint;
-     private boolean tranType;
+     private int tranType;
      private Date tranTime;
 
     public TransactionModel() {
     }
 
 	
-    public TransactionModel(UserModel tblMpUser, int tranPoint, boolean tranType, Date tranTime) {
+    public TransactionModel(UserModel tblMpUser, int tranPoint, int tranType, Date tranTime) {
         this.tblMpUser = tblMpUser;
         this.tranPoint = tranPoint;
         this.tranType = tranType;
         this.tranTime = tranTime;
     }
-    public TransactionModel(UserModel tblMpUser, String tranDescription, int tranPoint, boolean tranType, Date tranTime) {
+    public TransactionModel(UserModel tblMpUser, String tranDescription, int tranPoint, int tranType, Date tranTime) {
        this.tblMpUser = tblMpUser;
        this.tranDescription = tranDescription;
        this.tranPoint = tranPoint;
@@ -92,11 +92,11 @@ public class TransactionModel {
 
     
     @Column(name="tran_type", nullable=false)
-    public boolean isTranType() {
+    public int getTranType() {
         return this.tranType;
     }
     
-    public void setTranType(boolean tranType) {
+    public void setTranType(int tranType) {
         this.tranType = tranType;
     }
 

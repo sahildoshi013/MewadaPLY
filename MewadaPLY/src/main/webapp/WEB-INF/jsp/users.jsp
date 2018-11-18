@@ -72,12 +72,13 @@
               </tbody>
               <tfoot>
                   <tr>
-                      <th>Profile</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>City</th>
-                      <th>Points</th>
-                      <th>redeem Requests</th>
+					<th>Profile</th>
+					<th>Name</th>
+	                 <th>Address</th>
+	                 <th>City</th>
+	                 <th>Reward Points</th>
+	                 <th>Redeem Points</th>
+	                 <th>Point Left</th>
                   </tr>
               </tfoot>
           </table>

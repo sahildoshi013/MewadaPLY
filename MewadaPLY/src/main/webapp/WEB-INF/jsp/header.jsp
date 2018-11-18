@@ -201,14 +201,14 @@
         </li>-->
 
         <li class="${page == 6 ? "active" : ""}">
-        <a href="mewadaply395004admin/main/points_history">
+        <a href="/admin/transaction">
             <i class="fa fa-history"></i>
             <span>Points History</span>
           </a>
         </li>
 
         <li class="${page == 7 ? "active" : ""}">
-        <a href="mewadaply395004admin/main/feedback">
+        <a href="/admin/feedback">
             <i class="fa fa-comments"></i>
             <span>Feedbacks</span>
           </a>
