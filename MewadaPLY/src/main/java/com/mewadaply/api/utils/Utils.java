@@ -14,6 +14,7 @@ public class Utils {
 	public static final int REWARD_POINT_STATUS = 1;
 	public static final int REDEEM_POINT_STATUS = 2;
 	public static final Integer CUSTOMER_USER_TYPE = 3;
+	public static final String SESSION_LOGIN = "login";
 	
 	
 	public static String randomName(MultipartFile file) {

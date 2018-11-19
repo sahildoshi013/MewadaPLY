@@ -1,13 +1,14 @@
 package com.mewadaply.api.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.mewadaply.api.service.DashboardService;
+import com.mewadaply.api.utils.Utils;
 
 @Controller
 @RequestMapping("/admin")
@@ -18,7 +19,11 @@ public class DashboardController {
 	
 	
 	@GetMapping("/dashboard")
-	public String showPage(ModelMap model) {
+	public String showPage(HttpSession session,ModelMap model) {
+		Boolean res = (Boolean)session.getAttribute(Utils.SESSION_LOGIN);
+		if(res==null || !res) {
+				return "redirect:/login";
+		}
 		model.put("page", 1);
 		model.put("user_count",dashboardService.getUserCount());
 		model.put("redeem_count",dashboardService.getRedeemCount());

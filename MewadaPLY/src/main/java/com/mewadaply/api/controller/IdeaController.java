@@ -2,6 +2,8 @@ package com.mewadaply.api.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import com.mewadaply.api.model.Result;
 import com.mewadaply.api.model.IdeaDesignModel;
 import com.mewadaply.api.model.IdeaTypeModel;
 import com.mewadaply.api.service.IdeasService;
+import com.mewadaply.api.utils.Utils;
 
 @Controller
 @RequestMapping("/admin/ideas")
@@ -24,7 +27,7 @@ public class IdeaController {
 	IdeasService ideaService;
 
 	@GetMapping
-	List<IdeaTypeModel> getAllIdeaType() {
+	List<IdeaTypeModel> getAllIdeaType(){
 		List<IdeaTypeModel> categories = ideaService.getCategories();
 		System.out.println(categories.size());
 		return categories;
@@ -44,7 +47,11 @@ public class IdeaController {
 	}
 
 	@GetMapping("/{type}")
-	public String showIdeaPage(ModelMap model, @PathVariable Integer type) {
+	public String showIdeaPage(ModelMap model, @PathVariable Integer type,HttpSession session) {
+		Boolean res = (Boolean)session.getAttribute(Utils.SESSION_LOGIN);
+		if(res==null || !res) {
+				return "redirect:/login";
+		}
 		model.put("page", 4);
 		model.put("types", ideaService.getCategories());
 		model.put("type", ideaService.getCategoryById(type));
