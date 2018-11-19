@@ -147,14 +147,14 @@
                         <c:forEach items="${history}" var="value">
                         <div class="row">
                             <div class="col-sm-2">
-                                <img src="images/users/${value.profile_pic}" class="img-circle center-block img-responsive" style="height:40px; width:40px;">
+                                <img src="/images/users/${value.tblMpUser.profilePic}" class="img-circle center-block img-responsive" style="height:40px; width:40px;">
                             </div>
                             <div class="col-sm-7  text-center">
-                                <b>${value.first_name} ${value.last_name}</b><br>
-                                ${value.phone_no}
+                                <b>${value.tblMpUser.firstName} ${value.tblMpUser.lastName}</b><br>
+                                ${value.tblMpUser.phoneNo}
                             </div>
                             <div class="col-sm-3  text-center">
-                            	${value.tran_type == 1  ? "+ " : "- "} ${value.tran_point}
+                            	${value.tranType == 1  ? "+ " : "- "} ${value.tranPoint}
                             </div>
                         </div>
                         <hr>

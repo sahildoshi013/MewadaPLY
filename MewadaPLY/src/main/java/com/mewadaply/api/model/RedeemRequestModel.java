@@ -26,13 +26,13 @@ public class RedeemRequestModel {
      private Integer requestId;
      private RedeemOffersModel tblMpRedeemOffers;
      private UserModel tblMpUser;
-     private boolean requestStatus;
+     private Integer requestStatus;
      private Date requestTime;
 
     public RedeemRequestModel() {
     }
 
-    public RedeemRequestModel(RedeemOffersModel tblMpRedeemOffers, UserModel tblMpUser, boolean requestStatus, Date requestTime) {
+    public RedeemRequestModel(RedeemOffersModel tblMpRedeemOffers, UserModel tblMpUser, Integer requestStatus, Date requestTime) {
        this.tblMpRedeemOffers = tblMpRedeemOffers;
        this.tblMpUser = tblMpUser;
        this.requestStatus = requestStatus;
@@ -73,11 +73,11 @@ public class RedeemRequestModel {
 
     
     @Column(name="request_status", nullable=false)
-    public boolean isRequestStatus() {
+    public Integer getRequestStatus() {
         return this.requestStatus;
     }
     
-    public void setRequestStatus(boolean requestStatus) {
+    public void setRequestStatus(Integer requestStatus) {
         this.requestStatus = requestStatus;
     }
 

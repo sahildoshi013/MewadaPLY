@@ -180,7 +180,7 @@
         </li>
 
         <li class="${page == 3 ? "active" : ""}">
-        <a href="/admin/offer">
+        <a href="/admin/offers">
             <i class="fa fa-dollar"></i>
             <span>Reward Offers</span>
           </a>

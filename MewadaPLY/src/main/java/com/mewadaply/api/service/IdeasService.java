@@ -14,7 +14,7 @@ import com.mewadaply.api.dao.IdeaDesignDao;
 import com.mewadaply.api.dao.IdeaTypeDao;
 import com.mewadaply.api.model.IdeaDesignModel;
 import com.mewadaply.api.model.IdeaTypeModel;
-import com.mewadaply.api.utils.FileUtils;
+import com.mewadaply.api.utils.Utils;
 
 @Service
 public class IdeasService {
@@ -58,11 +58,11 @@ public class IdeasService {
 	}
 
 	public IdeaDesignModel addDesign(int type, MultipartFile image) {
-		String filename = FileUtils.randomName(image);
+		String filename = Utils.randomName(image);
 		try {
 			// Get the file and save it somewhere
 			byte[] bytes = image.getBytes();
-			Path path = Paths.get(FileUtils.UPLOAD_DESIGN_PATH + filename);
+			Path path = Paths.get(Utils.UPLOAD_DESIGN_PATH + filename);
 			Files.write(path, bytes);
 		} catch (IOException e) {
 			e.printStackTrace();

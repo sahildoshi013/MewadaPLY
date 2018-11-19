@@ -3,15 +3,11 @@ package com.mewadaply.api.model;
 
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,8 +27,7 @@ public class RedeemOffersModel {
      private String offerImage;
      private Date offerCreationTime;
      private boolean offerActive;
-     private Set<RedeemRequestModel> tblMpRedeemRequests = new HashSet<RedeemRequestModel>(0);
-
+     
     public RedeemOffersModel() {
     }
 
@@ -44,14 +39,13 @@ public class RedeemOffersModel {
         this.offerCreationTime = offerCreationTime;
         this.offerActive = offerActive;
     }
-    public RedeemOffersModel(String offerName, String offerDescription, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive, Set<RedeemRequestModel> tblMpRedeemRequests) {
+    public RedeemOffersModel(String offerName, String offerDescription, int offerPoint, String offerImage, Date offerCreationTime, boolean offerActive) {
        this.offerName = offerName;
        this.offerDescription = offerDescription;
        this.offerPoint = offerPoint;
        this.offerImage = offerImage;
        this.offerCreationTime = offerCreationTime;
        this.offerActive = offerActive;
-       this.tblMpRedeemRequests = tblMpRedeemRequests;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -125,17 +119,6 @@ public class RedeemOffersModel {
     public void setOfferActive(boolean offerActive) {
         this.offerActive = offerActive;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tblMpRedeemOffers")
-    public Set<RedeemRequestModel> getTblMpRedeemRequests() {
-        return this.tblMpRedeemRequests;
-    }
-    
-    public void setTblMpRedeemRequests(Set<RedeemRequestModel> tblMpRedeemRequests) {
-        this.tblMpRedeemRequests = tblMpRedeemRequests;
-    }
-
-
 
 
 }
