@@ -1,6 +1,8 @@
 package com.mewadaply.api.controller;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mewadaply.api.model.RedeemOffersModel;
 import com.mewadaply.api.model.RedeemRequestModel;
 import com.mewadaply.api.model.Result;
+import com.mewadaply.api.model.TransactionModel;
+import com.mewadaply.api.model.UserModel;
+import com.mewadaply.api.response.AjaxUserDetails;
+import com.mewadaply.api.response.UserDetails;
 import com.mewadaply.api.service.IdeasService;
 import com.mewadaply.api.service.RedeemOfferService;
 import com.mewadaply.api.service.RedeemRequestService;
+import com.mewadaply.api.service.TransactionService;
+import com.mewadaply.api.service.UserService;
 
 
 @RestController
@@ -37,6 +45,12 @@ public class AjaxController {
 	
 	@Autowired
 	RedeemRequestService redeemRequestService;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	TransactionService transactionService;
 
 	@DeleteMapping("/ideas/{type}")
 	@CrossOrigin(origins = "*")
@@ -118,4 +132,24 @@ public class AjaxController {
 		
 		return Result.getResult(result!=null, result);
 	}
+	
+	@GetMapping("/userlist/{query}")
+	@CrossOrigin(origins = "*")
+	public AjaxUserDetails getUserByQuery(@PathVariable String query) {
+		List<UserModel> users = userService.getUserByQuery(query); 
+		List<UserDetails> result = new LinkedList<>();
+		for(UserModel user : users) {
+			result.add(new UserDetails(user.getUserId(), user.getFirstName() + " " + user.getLastName(), user));
+		}
+		return new AjaxUserDetails(result);
+	}
+	
+	@PostMapping("/transaction")
+	public Result addReward(@RequestParam("user_id") int userId,
+							@RequestParam("point") int point,
+							@RequestParam("description") String desc) {
+		boolean result = transactionService.addReward(userId,point,desc); 
+		return Result.getResult(result, "done");
+	}
+
 }

@@ -17,4 +17,8 @@ public class UserService {
 	public List<UserModel> getAllUsers(){
 		return userDao.findAllByuserType(3);
 	}
+
+	public List<UserModel> getUserByQuery(String query) {
+		return userDao.findByfirstNameContainingAllIgnoreCase(query);
+	}
 }

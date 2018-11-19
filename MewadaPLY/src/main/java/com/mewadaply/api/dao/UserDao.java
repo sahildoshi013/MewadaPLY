@@ -19,4 +19,7 @@ public interface UserDao extends JpaRepository<UserModel, Integer> {
 	
 	@Query(value = "SELECT SUM(point_redeem) FROM tbl_mp_user WHERE user_type = 3 ", nativeQuery = true)
 	Long sumOfpointRedeem();
+	
+	@Query("SELECT u FROM UserModel u WHERE u.firstName LIKE %?1% OR u.lastName LIKE %?1% OR  u.emailId LIKE %?1% OR u.phoneNo LIKE %?1%")
+	List<UserModel> findByfirstNameContainingAllIgnoreCase(String query);
 }

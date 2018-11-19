@@ -39,7 +39,7 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="/admin/users" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -54,7 +54,7 @@
                     <div class="icon">
                         <i class="ion ion-ribbon-b"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="/admin/redeem" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -69,7 +69,7 @@
                     <div class="icon">
                         <i class="ion ion-cash"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="/admin/transaction" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -84,7 +84,7 @@
                     <div class="icon">
                         <i class="ion ion-code-download"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="/admin/transaction" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -100,7 +100,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" method="post" id="reward_form">
+                    <form class="form-horizontal" id="reward_form">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="reward_point_phone" class="col-sm-4 control-label">Name/Phone No.</label>
@@ -159,7 +159,7 @@
                         </div>
                         <hr>
                         </c:forEach>
-                        <button type="button" name="button" class="btn btn-info pull-right">See All</button>
+                        <a href="/admin/transaction"><button type="button" name="button" class="btn btn-info pull-right">See All</button></a>
                     </div>
                 </div>
             </section>
@@ -169,7 +169,6 @@
     <!-- /.content -->
 </div>
 
-<script type="text/javascript" src="/js/admin/users.js"></script>
 <script type="text/javascript" src="/js/custom/dashboard.js"></script>
 
 <jsp:include page='footer.jsp' />
