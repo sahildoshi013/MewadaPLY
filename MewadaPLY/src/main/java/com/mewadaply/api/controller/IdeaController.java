@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.mewadaply.api.model.Result;
+
 import com.mewadaply.api.model.IdeaDesignModel;
 import com.mewadaply.api.model.IdeaTypeModel;
+import com.mewadaply.api.response.Result;
 import com.mewadaply.api.service.IdeasService;
 import com.mewadaply.api.utils.Utils;
 

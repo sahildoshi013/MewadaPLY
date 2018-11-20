@@ -1,4 +1,4 @@
-package com.mewadaply.api.model;
+package com.mewadaply.api.response;
 
 public class Result {
 		

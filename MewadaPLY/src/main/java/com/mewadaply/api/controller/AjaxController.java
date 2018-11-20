@@ -21,9 +21,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mewadaply.api.model.RedeemOffersModel;
 import com.mewadaply.api.model.RedeemRequestModel;
-import com.mewadaply.api.model.Result;
 import com.mewadaply.api.model.UserModel;
 import com.mewadaply.api.response.AjaxUserDetails;
+import com.mewadaply.api.response.Result;
 import com.mewadaply.api.response.UserDetails;
 import com.mewadaply.api.service.IdeasService;
 import com.mewadaply.api.service.RedeemOfferService;

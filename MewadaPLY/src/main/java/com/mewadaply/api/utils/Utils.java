@@ -15,6 +15,8 @@ public class Utils {
 	public static final int REDEEM_POINT_STATUS = 2;
 	public static final Integer CUSTOMER_USER_TYPE = 3;
 	public static final String SESSION_LOGIN = "login";
+	public static final String UPLOAD_USER_PROFILE_PATH = UPLOAD_PATH + "images\\users\\";
+	public static final int REDEEM_REQUEST_TYPE = 2;
 	
 	
 	public static String randomName(MultipartFile file) {
@@ -33,6 +35,14 @@ public class Utils {
 	        return ""; // empty extension
 	    }
 	    return name.substring(lastIndexOf);
+	}
+
+
+
+	public static String removeQuotes(String str) {
+		if(str.isEmpty())
+			return null;
+		return str.substring(1,str.length()-1);
 	}
 
 

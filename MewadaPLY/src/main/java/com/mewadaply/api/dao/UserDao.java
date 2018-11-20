@@ -22,4 +22,6 @@ public interface UserDao extends JpaRepository<UserModel, Integer> {
 	
 	@Query("SELECT u FROM UserModel u WHERE u.firstName LIKE %?1% OR u.lastName LIKE %?1% OR  u.emailId LIKE %?1% OR u.phoneNo LIKE %?1%")
 	List<UserModel> findByfirstNameContainingAllIgnoreCase(String query);
+
+	UserModel findByphoneNo(String number);
 }

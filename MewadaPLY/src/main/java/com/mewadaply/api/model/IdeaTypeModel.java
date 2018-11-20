@@ -19,7 +19,7 @@ public class IdeaTypeModel{
 	
 	
 	private Integer typeId;
-     private String typeName;
+    private String typeName;
      //private Set<TblMpFurnitureDesign> tblMpFurnitureDesigns = new HashSet<TblMpFurnitureDesign>(0);
 
     public IdeaTypeModel() {
