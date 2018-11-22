@@ -40,7 +40,7 @@ public class TransactionService {
 		TransactionModel tran = new TransactionModel();
 		
 		tran.setTblMpUser(userDao.findById(userId).get());
-		tran.setTranDescription(desc);
+		tran.setTranDescription(Utils.REWARD + desc);
 		tran.setTranPoint(point);
 		tran.setTranType(Utils.REWARD_POINT_STATUS);
 		

@@ -1,7 +1,7 @@
 $(".js-example-data-ajax").select2({
     ajax: {
         url: function (params) {
-        		var url = 'http://localhost:8080/admin/userlist/'+ params.term;
+        		var url = 'http://' +$(location).attr('host')+'/admin/userlist/'+ params.term;
                 return url;
               },
         type: 'GET',

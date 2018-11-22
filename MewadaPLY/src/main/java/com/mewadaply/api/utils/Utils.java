@@ -17,6 +17,7 @@ public class Utils {
 	public static final String SESSION_LOGIN = "login";
 	public static final String UPLOAD_USER_PROFILE_PATH = UPLOAD_PATH + "images\\users\\";
 	public static final int REDEEM_REQUEST_TYPE = 2;
+	public static final String REWARD = "Reward : ";
 	
 	
 	public static String randomName(MultipartFile file) {

@@ -43,7 +43,7 @@ function delete_image(id) {
 	if (confirm('Are you sure delete this data?')) {
 		// ajax delete data from database
 		var parentdiv = $('#' + id).parent();
-		var url = "http://localhost:8080/admin/ideas/" + id;
+		var url = 'http://' +$(location).attr('host')+'/admin/ideas/' + id;
 		console.log(url);
 		$.ajax({
 			url : url,
